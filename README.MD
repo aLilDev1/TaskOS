@@ -1,5 +1,5 @@
 # ***TaskOS***
-![](github/logo.png)
+![](github/logo.png) ![](github/desktop.png)
 
 TaskOS is a operating system ontop of the Linux kernel, stand-alone from any other distributions\.
 This is currently just plans, and a few .C and .H files, and that's about it.
