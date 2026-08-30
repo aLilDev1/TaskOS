@@ -5,6 +5,6 @@ This is currently just plans, assembly files, some ANSI-C files, and that's abou
 
 Nothing here is compiled, so you would have to do that yourself, nor is anything in a bootable setting yet.
 
-The image below shows what I plan the OS desktop to look like, and for now, the video manager will be rendered as a classic theme, no glass as shown below yet.
+The image below shows what I plan the OS desktop to look like, and for now, the video manager will be rendered as a classic theme, so no glass as shown below yet.
 
 ![Example Desktop](github/desktop.png)
