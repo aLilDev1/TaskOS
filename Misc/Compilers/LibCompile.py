@@ -2,17 +2,41 @@ from pathlib import Path
 import re
 
 """
+
 Directory must have this exact layout:
+  directory/
+    XXXX-ID/
+      XXXX-ID.ext   # Fix this for the full 32-bit ID later
+      
+  XXXX is just a 4 letter name, can include numbers
+  ID is a index identifier, done as hexadecimal
+  .ext is just the extension for the file, ignored, doesn't care what this is, doesn't care if it's not there.
+  
+  Resulting file should be used with the ".lib" extension, or the ".xlib" extension, the ".xlib" extension is for future improvements of this format.... or this compiler
 
-directory/
-  XXXX-ID/
-    XXXX-ID.ext
-    
-XXXX is just a 4 letter name, can include numbers
-ID is a index identifier, done as hexadecimal
-.ext is just the extension for the file, ignored, doesn't care what this is
 
-Resulting file should be used with the ".lib" extension, or the ".xlib" extension, the ".xlib" extension is for future improvments of this format.... or this compiler
+What a .lib file should look like:
+       0x00 0x01 0x02 0x03 0x04 0x05 0x06 0x07 0x08 0x09 0x0A 0x0B 0x0C 0x0D 0x0E 0x0F
+  0x00 [ Data Region Size                    ] [ Structure Region Size               ]
+  0x10 [ Data Region Start. Addr. (0x20)     ] [ Structure Region Start. Addr.       ]
+  0x20 [ Data Region                                                           . . . ]
+  0x-- [ Structure Region                                                      . . . ]
+  
+  Data Region:
+         0x00 0x01 0x02 0x03 0x04 0x05 0x06 0x07 0x08 0x09 0x0A 0x0B 0x0C 0x0D 0x0E 0x0F
+    0x00 0x03 [ Data Size                           ] [ Data                     . . . ]
+    0x-- 0x04
+  
+  Structure Region (may loop, starts at structure region start, or after previous directory):
+         0x00 0x01 0x02 0x03 0x04 0x05 0x06 0x07 0x08 0x09 0x0A 0x0B 0x0C 0x0D 0x0E 0x0F
+    0x00 0x01 [ ID    ] [ ASCII name ID   ] [ Directory region content. size      ] [
+    0x01 Content                                                                 . . . ]
+    0x-- 0x02
+
+    Content (may loop, starts at "Content", or after previous data entry):
+           0x00 0x01 0x02 0x03 0x04 0x05 0x06 0x07 0x08 0x09 0x0A 0x0B 0x0C 0x0D 0x0E 0x0F
+      0x00 [ ID                   ] [ ASCII name ID   ] [ Addr. to data              . . .
+      0x10    ]
 
 """
 
