@@ -14,8 +14,8 @@ Im sorry to say this but this was AI, based off the LibCompile, I just needed a 
 At least I was honest?
 """
 
-InputPath = r"C:\Users\Silas\Documents\Projects\AmberWood\TaskOS\Drive\TaskOS\Boot\BootGraphics.Lib"
-OutputPath = r"C:\Users\Silas\Desktop\BootGraphics"
+InputPath = r""
+OutputPath = r""
 
 
 with open(InputPath, "rb") as f:
